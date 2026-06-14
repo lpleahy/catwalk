@@ -33,6 +33,9 @@ var bedrockEuropeConfig []byte
 //go:embed configs/cerebras.json
 var cerebrasConfig []byte
 
+//go:embed configs/chatgpt.json
+var chatGPTConfig []byte
+
 //go:embed configs/chutes.json
 var chutesConfig []byte
 
@@ -137,6 +140,7 @@ var providerRegistry = []ProviderFunc{
 	bedrockUnitedStatesProvider,
 	bedrockEuropeProvider,
 	cerebrasProvider,
+	chatGPTProvider,
 	chutesProvider,
 	copilotProvider,
 	cortecsProvider,
@@ -206,6 +210,10 @@ func bedrockEuropeProvider() catwalk.Provider {
 
 func cerebrasProvider() catwalk.Provider {
 	return loadProviderFromConfig(cerebrasConfig)
+}
+
+func chatGPTProvider() catwalk.Provider {
+	return loadProviderFromConfig(chatGPTConfig)
 }
 
 func chutesProvider() catwalk.Provider {
