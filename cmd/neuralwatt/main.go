@@ -112,8 +112,8 @@ func main() {
 		APIKey:              "$NEURALWATT_API_KEY",
 		APIEndpoint:         "https://api.neuralwatt.com/v1",
 		Type:                catwalk.TypeOpenAICompat,
-		DefaultLargeModelID: "glm-5.1",
-		DefaultSmallModelID: "qwen3.6-35b",
+		DefaultLargeModelID: "glm-5.2",
+		DefaultSmallModelID: "glm-5.2-fast",
 	}
 
 	modelsResp, err := fetchNeuralwattModels(neuralwattProvider.APIEndpoint)
@@ -140,9 +140,8 @@ func main() {
 
 		costIn := ptrDeref(meta.Pricing.InputPerMillion, 0)
 		costOut := ptrDeref(meta.Pricing.OutputPerMillion, 0)
-		// Null cached pricing means same as non-cached
-		costInCached := ptrDeref(meta.Pricing.CachedInputPerMillion, costIn)
-		costOutCached := ptrDeref(meta.Pricing.CachedOutputPerMillion, costOut)
+		costInCached := ptrDeref(meta.Pricing.CachedInputPerMillion, 0)
+		costOutCached := ptrDeref(meta.Pricing.CachedOutputPerMillion, 0)
 
 		var defaultMaxTokens int64
 		if meta.Limits.MaxOutputTokens != nil {
