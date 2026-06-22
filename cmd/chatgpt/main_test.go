@@ -17,7 +17,7 @@ const sampleModelsBody = `{
       "display_name": "GPT-5.5",
       "context_window": 272000,
       "max_context_window": 400000,
-      "supported_reasoning_levels": ["low", "medium", "high", "xhigh"],
+      "supported_reasoning_levels": ["low", {"id": "medium"}, "high", "xhigh"],
       "default_reasoning_level": "medium",
       "input_modalities": ["text", "image"]
     },
@@ -40,7 +40,7 @@ func TestModelsToCatwalk(t *testing.T) {
 			DisplayName:              "GPT-5.5",
 			ContextWindow:            272000,
 			MaxContextWindow:         400000,
-			SupportedReasoningLevels: []string{"low", "medium", "high", "xhigh"},
+			SupportedReasoningLevels: []reasoningLevel{"low", "medium", "high", "xhigh"},
 			DefaultReasoningLevel:    "medium",
 			InputModalities:          []string{"text", "image"},
 		},
@@ -61,6 +61,7 @@ func TestModelsToCatwalk(t *testing.T) {
 			ID:                     "gpt-5.5",
 			Name:                   "GPT-5.5",
 			ContextWindow:          272000,
+			DefaultMaxTokens:       32000,
 			CanReason:              true,
 			ReasoningLevels:        []string{"low", "medium", "high", "xhigh"},
 			DefaultReasoningEffort: "medium",
@@ -70,6 +71,7 @@ func TestModelsToCatwalk(t *testing.T) {
 			ID:                     "gpt-5.4-mini",
 			Name:                   "GPT-5.4 Mini",
 			ContextWindow:          128000, // falls back to max_context_window when context_window is 0
+			DefaultMaxTokens:       16000,
 			CanReason:              false,
 			ReasoningLevels:        nil,
 			DefaultReasoningEffort: "",
