@@ -1,8 +1,8 @@
 {
   "name": "ChatGPT",
   "id": "chatgpt",
-  "type": "openai-compat",
   "api_endpoint": "https://chatgpt.com/backend-api/codex",
+  "type": "openai-compat",
   "default_large_model_id": "gpt-5.5",
   "default_small_model_id": "gpt-5.4-mini",
   "models": [
@@ -16,7 +16,12 @@
       "context_window": 272000,
       "default_max_tokens": 32000,
       "can_reason": true,
-      "reasoning_levels": ["low", "medium", "high", "xhigh"],
+      "reasoning_levels": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
       "default_reasoning_effort": "medium",
       "supports_attachments": true
     },
@@ -30,13 +35,18 @@
       "context_window": 272000,
       "default_max_tokens": 32000,
       "can_reason": true,
-      "reasoning_levels": ["low", "medium", "high", "xhigh"],
+      "reasoning_levels": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
       "default_reasoning_effort": "medium",
       "supports_attachments": true
     },
     {
       "id": "gpt-5.4-mini",
-      "name": "GPT-5.4 Mini",
+      "name": "GPT-5.4-Mini",
       "cost_per_1m_in": 0,
       "cost_per_1m_out": 0,
       "cost_per_1m_in_cached": 0,
@@ -44,13 +54,18 @@
       "context_window": 272000,
       "default_max_tokens": 32000,
       "can_reason": true,
-      "reasoning_levels": ["low", "medium", "high", "xhigh"],
+      "reasoning_levels": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
       "default_reasoning_effort": "medium",
       "supports_attachments": true
     },
     {
       "id": "gpt-5.3-codex-spark",
-      "name": "GPT-5.3 Codex Spark",
+      "name": "GPT-5.3-Codex-Spark",
       "cost_per_1m_in": 0,
       "cost_per_1m_out": 0,
       "cost_per_1m_in_cached": 0,
@@ -58,8 +73,32 @@
       "context_window": 128000,
       "default_max_tokens": 16000,
       "can_reason": true,
-      "reasoning_levels": ["low", "medium", "high", "xhigh"],
+      "reasoning_levels": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
       "default_reasoning_effort": "high",
+      "supports_attachments": false
+    },
+    {
+      "id": "codex-auto-review",
+      "name": "Codex Auto Review",
+      "cost_per_1m_in": 0,
+      "cost_per_1m_out": 0,
+      "cost_per_1m_in_cached": 0,
+      "cost_per_1m_out_cached": 0,
+      "context_window": 272000,
+      "default_max_tokens": 32000,
+      "can_reason": true,
+      "reasoning_levels": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "default_reasoning_effort": "medium",
       "supports_attachments": true
     }
   ]

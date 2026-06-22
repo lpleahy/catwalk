@@ -90,6 +90,11 @@ tasks:
     cmds:
       - go run cmd/chatgpt/main.go
 
+  sync:chatgpt:
+    desc: Sync ChatGPT subscription models
+    cmds:
+      - scripts/sync-chatgpt-models
+
   gen:chutes:
     desc: Generate chutes provider configurations
     cmds:

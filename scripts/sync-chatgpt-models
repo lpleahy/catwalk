@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT=$(git -C "$(dirname "${BASH_SOURCE[0]}")/.." rev-parse --show-toplevel)
+cd "$ROOT"
+
+DEFAULT_LARGE_MODEL=${DEFAULT_LARGE_MODEL:-gpt-5.5}
+DEFAULT_SMALL_MODEL=${DEFAULT_SMALL_MODEL:-gpt-5.4-mini}
+CLIENT_VERSION=${CLIENT_VERSION:-0.130.0}
+API_ENDPOINT=${API_ENDPOINT:-https://chatgpt.com/backend-api/codex}
+
+args=(
+  "--client-version=$CLIENT_VERSION"
+  "--api-endpoint=$API_ENDPOINT"
+  "--default-large-model=$DEFAULT_LARGE_MODEL"
+  "--default-small-model=$DEFAULT_SMALL_MODEL"
+)
+
+if [[ -n "${CHATGPT_ACCESS_TOKEN:-}" ]]; then
+  args+=("--token=$CHATGPT_ACCESS_TOKEN")
+fi
+
+go run ./cmd/chatgpt "${args[@]}"
+
+echo
+jq -r '.models[].id' internal/providers/configs/chatgpt.json
